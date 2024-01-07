@@ -1,8 +1,14 @@
 {
   "name": "@idrinth/duplicate-style-check",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A linting tool trying to find duplicated style rules",
   "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "lint",
+    "duplication"
+  ],
   "scripts": {
     "tsc": "tsc -p tsconfig.json",
     "prepublishOnly": "npm run tsc",
