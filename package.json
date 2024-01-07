@@ -1,11 +1,13 @@
 {
   "name": "@idrinth/duplicate-style-check",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.2",
+  "description": "A linting tool trying to find duplicated stylings",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc -p tsconfig.json"
+    "tsc": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run tsc",
+    "postpublishOnly": "npm run clear",
+    "clear": "node tools/clear-js-files-from-src.js"
   },
   "private": false,
   "dependencies": {
@@ -16,5 +18,9 @@
     "@types/node": "^20.10.6",
     "typescript": "^5.3.3",
     "ts-node": "^10.9.2"
+  },
+  "bin": {
+    "lint-css-duplicates": "bin/lint-css-duplicates.js",
+    "ilcd": "bin/lint-css-duplicates.js"
   }
 }
