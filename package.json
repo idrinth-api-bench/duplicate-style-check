@@ -1,6 +1,6 @@
 {
   "name": "@idrinth/duplicate-style-check",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A linting tool trying to find duplicated stylings",
   "type": "module",
   "scripts": {

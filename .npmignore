@@ -1,0 +1,17 @@
+/test
+/examples
+/nbproject
+/README.md
+.eslintrc.yml
+/.nyc_output
+/coverage
+/.mocharc.cjs
+/.nycrc.json
+/.markdownlint.yaml
+/.github
+/.idea
+/tools
+/.editorconfig
+/SECURITY.md
+/CODE_OF_CONDUCT.md
+/CONTRIBUTING.md
