@@ -1,0 +1,6 @@
+/.idea
+/node_modules
+
+# Project exclude paths
+/src/build-map.js
+/src/index.js

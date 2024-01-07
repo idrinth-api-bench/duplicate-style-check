@@ -1,0 +1,20 @@
+{
+  "name": "@idrinth/duplicate-style-check",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc -p tsconfig.json"
+  },
+  "private": false,
+  "dependencies": {
+    "css": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/css": "^0.0.37",
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2"
+  }
+}
