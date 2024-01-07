@@ -1,7 +1,7 @@
 {
   "name": "@idrinth/duplicate-style-check",
-  "version": "1.0.3",
-  "description": "A linting tool trying to find duplicated stylings",
+  "version": "1.0.4",
+  "description": "A linting tool trying to find duplicated style rules",
   "type": "module",
   "scripts": {
     "tsc": "tsc -p tsconfig.json",
