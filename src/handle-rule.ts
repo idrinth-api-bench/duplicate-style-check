@@ -1,6 +1,6 @@
 import css from "css";
 import Rules from "./rules.js";
-import {handleDeclaration} from "./handle-declaration.js";
+import handleDeclaration from "./handle-declaration.js";
 
 export default (rule: css.Rule, rules: Rules, media: string = '') => {
   let fails = false;
