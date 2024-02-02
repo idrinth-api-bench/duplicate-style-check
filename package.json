@@ -13,7 +13,7 @@
     "tsc": "tsc -p tsconfig.json",
     "prepublishOnly": "npm run tsc",
     "postpublishOnly": "npm run clear",
-    "clear": "node tools/clear-js-files-from-src.js"
+    "clear": "rm src/*.js"
   },
   "private": false,
   "dependencies": {
@@ -24,7 +24,9 @@
     "@types/node": "^20.10.6",
     "typescript": "^5.3.3",
     "ts-node": "^10.9.2",
-    "eslint": "^8.56.0"
+    "eslint": "^8.56.0",
+    "eslint-plugin-json": "^3.1.0",
+    "@typescript-eslint/parser": "^6.20.0"
   },
   "bin": {
     "lint-css-duplicates": "bin/lint-css-duplicates.js",
