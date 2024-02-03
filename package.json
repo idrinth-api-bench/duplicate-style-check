@@ -13,7 +13,7 @@
     "tsc": "tsc -p tsconfig.json",
     "prepublishOnly": "npm run tsc",
     "postpublishOnly": "npm run clear",
-    "clear": "rm src/*.js"
+    "clear": "node tools/clear-js-files-from-src.js"
   },
   "private": false,
   "dependencies": {
