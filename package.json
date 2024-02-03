@@ -23,7 +23,10 @@
     "@types/css": "^0.0.37",
     "@types/node": "^20.10.6",
     "typescript": "^5.3.3",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "eslint": "^8.56.0",
+    "eslint-plugin-json": "^3.1.0",
+    "@typescript-eslint/parser": "^6.20.0"
   },
   "bin": {
     "lint-css-duplicates": "bin/lint-css-duplicates.js",

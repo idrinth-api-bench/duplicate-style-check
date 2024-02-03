@@ -16,6 +16,3 @@ const clearFolder = (folder,) => {
   }
 };
 clearFolder(__dirname + '../src',);
-if (existsSync(__dirname + '../index.js')) {
-  rmSync(__dirname + '../index.js',);
-}

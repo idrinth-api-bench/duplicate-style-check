@@ -1,11 +1,25 @@
 import css from "css";
-import Rules from "./rules.js";
 import handleRule from "./handle-rule.js";
+import Media from "./media.js";
+import RuleStore from "./rule-store.js";
+import handleFile from "./handle-file.js";
 
-export default (rule: css.Media, rules: Rules): boolean => {
+const handleAtRule = (rule: css.Media, rules: RuleStore, media: Media): boolean => {
   let fails = false;
   for (const rul of rule.rules || []) {
-    fails = handleRule(rul, rules, rule.media) || fails;
+    if (rul.type === 'rule') {
+      const ru: css.Rule = rul;
+      fails = handleRule(ru, rules, media, ru.position.source) || fails;
+    } else if (rul.type === 'media') {
+      const ru: css.Media = rul;
+      fails = handleAtRule(ru, rules, media.createChild(ru.media || '',))
+    } else if (rul.type === 'import') {
+      const ru: css.Import = rul;
+      if (ru.import.match(/^[^/]/,)) {
+        fails = handleFile(ru.position.source.replace(/[\\/].*?\.css$/, '/') + ru.import, rules, media);
+      }
+    }
   }
   return fails;
 };
+export default handleAtRule;

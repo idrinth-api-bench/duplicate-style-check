@@ -1,24 +1,20 @@
 import css from "css";
-import Rules from "./rules.js";
+import Media from "./media.js";
+import RuleStore from "./rule-store.js";
 
-export default (selector: string, declaration: css.Declaration, position: css.Position | undefined, media: string, rules: Rules): boolean => {
+export default (selector: string, declaration: css.Declaration, position: css.Position, media: Media, rules: RuleStore, file: string): boolean => {
   let fails = false;
-  if (rules[selector]) {
-    if (rules[selector][media]) {
-      if (rules[selector][media][declaration.property || '']) {
-        fails = true;
-        console.error(`${declaration.property} of ${selector} overwrites a previous definition in line ${position?.line} for media ${media}.`);
-      }
-    }
-    if (media !== '' && rules[selector]['']) {
-      if (rules[selector][''][declaration.property || ''] && rules[selector][''][declaration.property || ''] === declaration.value || '') {
-        fails = true;
-        console.error(`${declaration.property} of ${selector} overwrites a previous definition in line ${position?.line} general with the same value.`);
-      }
+  const property = declaration.property || '';
+  const latest = rules.latest(selector, media, property);
+  if (latest) {
+    if (latest.media.toString() === media.toString()) {
+      fails = true;
+      console.error(`${property} of ${selector} in file:line:column ${file}:${position.line}:${position.column} overwrites a previous definition for the same @media in file:line:column ${latest.file}:${latest.line}:${latest.column}.`);
+    } else if (latest.value === declaration.value) {
+      fails = true;
+      console.error(`${property} of ${selector} in file:line:column ${file}:${position.line}:${position.column} overwrites a previous definition in file:line:column ${latest.file}:${latest.line}:${latest.column} with the same value.`);
     }
   }
-  rules[selector] = rules[selector] || {};
-  rules[selector][media] = rules[selector][media] || {};
-  rules[selector][media][declaration.property || ''] = declaration.value || '';
+  rules.add(selector, media, property, declaration.value, position.line, position.column, file)
   return fails;
 }
