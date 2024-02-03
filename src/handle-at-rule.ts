@@ -15,7 +15,7 @@ const handleAtRule = (rule: css.Media, rules: RuleStore, media: Media): boolean 
       fails = handleAtRule(ru, rules, media.createChild(ru.media || '',))
     } else if (rul.type === 'import') {
       const ru: css.Import = rul;
-      if (rul.import.match(/^[^/]/,)) {
+      if (ru.import.match(/^[^/]/,)) {
         fails = handleFile(ru.position.source.replace(/[\\/].*?\.css$/, '/') + ru.import, rules, media);
       }
     }
