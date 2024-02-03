@@ -29,10 +29,11 @@ export default class RuleStore {
     value: string,
     line: number|undefined = undefined,
     column: number|undefined = undefined,
+    file: string|undefined = undefined,
   ): void {
     this.data[selector] = this.data[selector] || {};
     this.data[selector][property] = this.data[selector][property] || {};
-    this.data[selector][property][media.toString()] = new Rule(selector, property, media, value, this.index, line, column);
+    this.data[selector][property][media.toString()] = new Rule(selector, property, media, value, this.index, line, column, file);
     this.index++;
   }
 }

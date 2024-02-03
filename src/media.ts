@@ -59,6 +59,12 @@ export default class Media
   }
   public createChild(media: string) : Media
   {
+    if (this.requirements.length === 0) {
+      return new Media(media);
+    }
+    if (media === '') {
+      return this;
+    }
     return new Media(this.toString() + ' and ' + media);
   }
 }

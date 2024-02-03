@@ -9,6 +9,7 @@ export default class Rule {
     public readonly index: number,
     public readonly line: number|undefined = undefined,
     public readonly column: number|undefined = undefined,
+    public readonly file: string|undefined = undefined,
   ) {
   }
 }
