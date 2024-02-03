@@ -1,6 +1,8 @@
 export default class Media
 {
   private requirements: string[] = [];
+  private media: string;
+  private options: string[] = [];
   constructor(media: string) {
     for (const requirement of media.split('and')) {
       const trimmed = requirement.replace(/^\s+|\s+$/ug, '');
@@ -12,10 +14,13 @@ export default class Media
   }
   public toString(): string
   {
-    if (this.requirements.length === 0) {
-      return 'general';
+    if (this.media) {
+      return this.media;
     }
-    return this.requirements.join(' and ');
+    if (this.requirements.length === 0) {
+      return this.media = 'general';
+    }
+    return this.media = this.requirements.join(' and ');
   }
   private * getAllOptions(index: number): Generator<string>
   {
@@ -30,8 +35,16 @@ export default class Media
   }
   public * getOptions(): Generator<string>
   {
+    if (this.options.length > 0) {
+      for(const option of this.options) {
+        yield option;
+      }
+      return;
+    }
+    this.options.push('');
     yield '';
     for (const option of this.getAllOptions(0)) {
+      this.options.push(option);
       yield option;
     }
   }
