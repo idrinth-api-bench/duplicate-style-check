@@ -7,8 +7,16 @@ This small tool checks for two cases of duplication so far:
 
 ## Usage
 
-Run `ilcd folder` or skip the folder and link the cwd recursively. The following patterns are ignored:
+Run `ilcd folder` or skip the folder and link the cwd recursively. The `node_modules` are ignored as file origin.
 
-- node_modules
-- dist
-- coverage
+Add a `.idrinth-duplicate-style-check.json` configuration file in the cwd to define entry points to get better results, example:
+
+```json
+{
+  "entrypoints": [
+    "index.css",
+    "src/hidden.css"
+  ]
+}
+```
+And yes, this can be run with npx as well: `npx @idrinth/duplicate-style-check`
